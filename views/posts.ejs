@@ -1,0 +1,32 @@
+<%- include("partials/header"); -%>
+
+<div class="container-edit">
+  <div class="container-header-edit">
+    <h1>Posts</h1>
+    <a href="/compose" class="new-button">+ New</a>
+  </div>
+  <div class="index-table-wrapper">
+    <div class="table-head">
+      <span class="id-column">ID</span>
+      <span>Title</span>
+    </div>
+    <ul class="table-body">
+      <% posts.reverse().forEach((post) => { %>
+        <li>
+          <div class="item-data">
+            <span class="id-column"><%= post.id %></span>
+            <span class="name-column"><a href="/posts/<%= post.title %>"><%= post.title %></a></span>
+          </div>
+          <div class="item-menu">
+            <form action="/delete/<%= post.id %>" method="post">
+              <input type="submit" value="Delete">
+            </form>
+            <a href="/edit/<%= post.id %>">Edit</a>
+          </div>
+        </li>
+      <% }) %>
+ </ul>
+  </div>
+</div>
+
+<%- include("partials/footer"); -%>
